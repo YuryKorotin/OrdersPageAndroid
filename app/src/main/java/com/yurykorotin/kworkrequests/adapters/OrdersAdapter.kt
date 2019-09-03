@@ -3,15 +3,16 @@ package com.yurykorotin.kworkrequests.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.yurykorotin.kworkrequests.databinding.FilterItemBinding
-import com.yurykorotin.kworkrequests.ui.models.FilterItem
+import com.bumptech.glide.Glide
+import com.yurykorotin.kworkrequests.R
+import com.yurykorotin.kworkrequests.databinding.OrderItemBinding
+import com.yurykorotin.kworkrequests.ui.models.Order
 
-class FiltersAdapter(var filterItems: List<FilterItem>)
-    : RecyclerView.Adapter<FiltersAdapter.ViewHolder>() {
-    val filterSelectionManager: FilterSelectionManager = FilterSelectionManager(filterItems)
+class OrdersAdapter(var orders: List<Order>)
+    : RecyclerView.Adapter<OrdersAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = FilterItemBinding.inflate(
+        val binding = OrderItemBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false)
@@ -19,21 +20,27 @@ class FiltersAdapter(var filterItems: List<FilterItem>)
     }
 
     override fun getItemCount(): Int {
-        return filterItems.size
+        return orders.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = filterItems[position]
+        val item = orders[position]
 
-        holder.filterItemBinding.filter = item
-        holder.filterItemBinding.statusTextView.text = item.status.title(holder.itemView.resources)
-
+        holder.orderItemBinding.order = item
+        holder.orderItemBinding.statusTextView.text = item.status.title(holder.itemView.resources)
+        holder.orderItemBinding.dateLabel.text = item.dateLabel(holder.itemView.resources)
         holder.itemView.setOnClickListener{
-            filterSelectionManager.onSelectionFilter(item)
+            //MainActivity::onOrderRequest(orders[position])
             notifyDataSetChanged()
         }
+
+        Glide
+            .with(holder.itemView.context)
+            .load(item.user.avatar)
+            .placeholder(R.drawable.ic_launcher_background)
+            .into(holder.orderItemBinding.avatar)
     }
 
-    class ViewHolder(val filterItemBinding: FilterItemBinding):
-        RecyclerView.ViewHolder(filterItemBinding.root)
+    class ViewHolder(val orderItemBinding: OrderItemBinding):
+        RecyclerView.ViewHolder(orderItemBinding.root)
 }

@@ -5,6 +5,7 @@ import com.yurykorotin.kworkrequests.utils.formatted
 import java.util.*
 
 data class Order(
+    var id: Long = 0L,
     var user: User = User(),
     var name: String = "",
     var status: OrderStatus = OrderStatus.InProcess,
