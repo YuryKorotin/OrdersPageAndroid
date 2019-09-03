@@ -10,7 +10,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(MockitoJUnitRunner::class)
+@RunWith(MockitoJUnitRunner.Silent::class)
 class UserTest {
     @Test
     fun testUserRoleIsCustomerByDefault() {
@@ -36,6 +36,7 @@ class UserTest {
 
         val resources = mock<Resources> {
             on { getString(any())} doReturn testTitle
+            on { getString(any(), any())} doReturn testTitle
         }
 
         assertTrue(user.getTitle(resources).contains(testTitle))

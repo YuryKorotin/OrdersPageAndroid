@@ -34,4 +34,18 @@ object Fixtures {
 
         return result.toList()
     }
+
+    fun buildWaitingOrders(): List<Order> {
+        val user = User("Tony Stark", "https://image.dhgate.com/0x0/f2/albu/g4/M01/CC/67/rBVaEVm3eneAU19mAAKIsNdQWYs177.jpg")
+        val price = "155 000\u20BD"
+        val name = "Очень монотонное длинное задание по бессмысленному превращению слова в текст и обратно"
+
+        val result = mutableListOf<Order>()
+        result.add(Order(1L, user, "Сборка Mark 42", OrderStatus.AwaitingData, Date(), price))
+        result.add(Order(2L, user, name, OrderStatus.AwaitingData, Date(), price))
+        result.add(Order(3L, user, "Низвержение таноса", OrderStatus.AwaitingData, Date(), price))
+        result.add(Order(4L, user, "Съемка с квадрокоптера всего процесса обучения", OrderStatus.AwaitingData, Date(), price))
+
+        return result.toList()
+    }
 }

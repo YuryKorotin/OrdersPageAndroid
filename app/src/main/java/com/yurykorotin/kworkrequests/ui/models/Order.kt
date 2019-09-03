@@ -10,6 +10,7 @@ data class Order(
     var name: String = "",
     var status: OrderStatus = OrderStatus.InProcess,
     var date: Date = Date(),
+    //TODO: Add price formatter with currency
     var price: String = "") {
     fun dateLabel(resources: Resources): String {
         return date.formatted(resources)
