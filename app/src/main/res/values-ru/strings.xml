@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Заказы Kwork</string>
     <string name="title">Заказы</string>
+    <string name="customer">покупатель</string>
+    <string name="seller">продавец</string>
 </resources>
