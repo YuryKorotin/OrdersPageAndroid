@@ -1,9 +1,6 @@
 package com.yurykorotin.kworkrequests.utils
 
-import com.yurykorotin.kworkrequests.ui.models.FilterItem
-import com.yurykorotin.kworkrequests.ui.models.Order
-import com.yurykorotin.kworkrequests.ui.models.OrderStatus
-import com.yurykorotin.kworkrequests.ui.models.User
+import com.yurykorotin.kworkrequests.ui.models.*
 import java.util.*
 
 object Fixtures {
@@ -14,6 +11,15 @@ object Fixtures {
 
         return result.toList()
     }
+
+    fun buildUsers(): List<User> {
+        val result = mutableListOf<User>()
+        result.add(User("", "", UserRole.Customer))
+        result.add(User("", "", UserRole.Seller))
+
+        return result.toList()
+    }
+
 
     fun buildOrders(): List<Order> {
         val user = User("Tony Stark", "https://image.dhgate.com/0x0/f2/albu/g4/M01/CC/67/rBVaEVm3eneAU19mAAKIsNdQWYs177.jpg")

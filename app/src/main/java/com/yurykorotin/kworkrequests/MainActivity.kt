@@ -12,6 +12,9 @@ import com.yurykorotin.kworkrequests.utils.Fixtures
 import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
 import android.net.Uri
+import android.widget.ArrayAdapter
+import androidx.appcompat.widget.Toolbar
+
 
 class MainActivity : AppCompatActivity(), ItemActionsProcessor {
 
@@ -19,10 +22,28 @@ class MainActivity : AppCompatActivity(), ItemActionsProcessor {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        title = getString(R.string.title)
-
+        setupToolbar()
         setupFilters()
         setupOrders()
+    }
+
+    private fun setupToolbar() {
+        title = getString(R.string.title)
+
+        setSupportActionBar(ordersToolbar)
+
+        val users = Fixtures.buildUsers().map { it.getTitle(resources) }
+
+        val adapter = ArrayAdapter(
+            this,
+            R.layout.filter_spinner_item,
+            users.toTypedArray()
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        if (userTypeSpinner != null) {
+            userTypeSpinner.adapter = adapter
+        }
     }
 
     fun setupFilters() {
