@@ -11,6 +11,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="?selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="@dimen/order_height">
 
@@ -46,6 +47,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toRightOf="@id/avatar"
             android:id="@+id/userName"
+            android:textStyle="bold"
             android:textSize="13sp"
             android:textColor="@color/colorBlack"
             android:layout_width="wrap_content"
@@ -68,7 +70,10 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:text="@{order.name}"
-            tools:text="Сделаю элегантный премиум логотип + визитная карточка"/>
+            android:ellipsize="end"
+            android:lines="2"
+            app:layout_constraintBottom_toTopOf="@id/statusTextView"
+            tools:text="Сделаю элегантный логотип + визитная карточка"/>
 
         <TextView
             app:layout_constraintBottom_toBottomOf="parent"

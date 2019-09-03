@@ -3,10 +3,11 @@ package com.yurykorotin.kworkrequests.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.yurykorotin.kworkrequests.ItemActionsProcessor
 import com.yurykorotin.kworkrequests.databinding.FilterItemBinding
 import com.yurykorotin.kworkrequests.ui.models.FilterItem
 
-class FiltersAdapter(var filterItems: List<FilterItem>)
+class FiltersAdapter(var filterItems: List<FilterItem>, val itemActionsProcessor: ItemActionsProcessor)
     : RecyclerView.Adapter<FiltersAdapter.ViewHolder>() {
     val filterSelectionManager: FilterSelectionManager = FilterSelectionManager(filterItems)
 
@@ -30,6 +31,7 @@ class FiltersAdapter(var filterItems: List<FilterItem>)
 
         holder.itemView.setOnClickListener{
             filterSelectionManager.onSelectionFilter(item)
+            itemActionsProcessor.onFilterChosen(item)
             notifyDataSetChanged()
         }
     }

@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.yurykorotin.kworkrequests.ItemActionsProcessor
 import com.yurykorotin.kworkrequests.R
 import com.yurykorotin.kworkrequests.databinding.OrderItemBinding
 import com.yurykorotin.kworkrequests.ui.models.Order
 
-class OrdersAdapter(var orders: List<Order>)
+class OrdersAdapter(var orders: List<Order>, val itemActionsProcessor: ItemActionsProcessor)
     : RecyclerView.Adapter<OrdersAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,7 +31,7 @@ class OrdersAdapter(var orders: List<Order>)
         holder.orderItemBinding.statusTextView.text = item.status.title(holder.itemView.resources)
         holder.orderItemBinding.dateLabel.text = item.dateLabel(holder.itemView.resources)
         holder.itemView.setOnClickListener{
-            //MainActivity::onOrderRequest(orders[position])
+            itemActionsProcessor.onOrderRequest(item)
             notifyDataSetChanged()
         }
 
