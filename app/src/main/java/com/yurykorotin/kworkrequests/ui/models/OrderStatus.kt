@@ -1,21 +1,20 @@
 package com.yurykorotin.kworkrequests.ui.models
 
-import android.app.Application
 import android.content.res.Resources
 import com.yurykorotin.kworkrequests.R
 
-sealed class UserRole {
+sealed class OrderStatus {
     abstract fun title(resources: Resources): String
 
-    object Customer : UserRole() {
+    object InProcess: OrderStatus() {
         override fun title(resources: Resources): String {
-            return resources.getString(R.string.customer)
+            return resources.getString(R.string.in_process)
         }
     }
 
-    object Seller : UserRole() {
+    object AwaitingData : OrderStatus() {
         override fun title(resources: Resources): String {
-            return resources.getString(R.string.seller)
+            return resources.getString(R.string.awaiting_data)
         }
     }
 }

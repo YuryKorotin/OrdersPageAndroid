@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Заказы Kwork</string>
     <string name="title">Заказы</string>
+    <string name="customer">покупатель</string>
+    <string name="seller">продавец</string>
+    <string name="user_title">Я %s</string>
+    <string name="in_process">В работе</string>
+    <string name="awaiting_data">Предоставьте данные</string>
+    <string name="today">сегодня</string>
+    <string name="yesterday">вчера</string>
 </resources>
