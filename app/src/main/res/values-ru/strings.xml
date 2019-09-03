@@ -3,4 +3,5 @@
     <string name="title">Заказы</string>
     <string name="customer">покупатель</string>
     <string name="seller">продавец</string>
+    <string name="user_title">Я %s</string>
 </resources>
